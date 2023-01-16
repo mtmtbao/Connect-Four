@@ -1,0 +1,16 @@
+import random
+from ps10pr3 import * # to use the connect_four and process_move functions
+
+class RandomPlayer(Player):
+    # def __init__(self, checker):
+    #     super().__init__(checker)
+        
+    def next_move(self, board):
+        """ choose at random from the columns in the specified board that are not yet full, and return the index of that randomly selected column
+        """
+        list = []
+        for col in range(board.width):
+            if board.can_add_to(col) == True:
+                list += [col]
+        self.num_moves += 1
+        return random.choice(list)
